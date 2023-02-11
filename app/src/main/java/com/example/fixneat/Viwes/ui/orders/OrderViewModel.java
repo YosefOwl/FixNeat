@@ -9,13 +9,12 @@ import com.example.fixneat.Model.Address;
 
 import java.util.ArrayList;
 
-public class HomeViewModel extends ViewModel {
+public class OrderViewModel extends ViewModel {
 
     private final MutableLiveData<ArrayList<Address>> mList;
 
-    public HomeViewModel() {
+    public OrderViewModel() {
         mList = new MutableLiveData<>();
-        //mText.setValue("This is slideshow fragment");
 
         ArrayList arrayList = new ArrayList<>();
         arrayList.add( new Address().setCity("0").setStreet("0").setHouseNum(1));

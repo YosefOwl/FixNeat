@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixneat.Model.Address;
 import com.example.fixneat.R;
-import com.example.fixneat.Viwes.Interfaces.OrderCallback;
-import com.example.fixneat.Viwes.adapters.OrderAdapter;
+import com.example.fixneat.Interfaces.OrderCallback;
+import com.example.fixneat.adapters.OrderAdapter;
 import com.example.fixneat.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -25,14 +25,13 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RecyclerView recyclerView;
     private OrderAdapter orderAdapter;
-    private HomeViewModel homeViewModel;
+    private OrderViewModel homeViewModel;
 
     OrderCallback orderCallback = (address, position) -> {
         replaceFragment(new DisplayOrderFragment());
     };
 
     private void replaceFragment(Fragment fragment) {
-
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.nav_host_fragment_content_menu, fragment)
@@ -41,7 +40,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -55,13 +54,13 @@ public class HomeFragment extends Fragment {
                 replaceFragment(new CreateOrderFragment());
             }
         });
+
         initView();
 
         return root;
     }
 
     private void initView() {
-
         ArrayList addresses = homeViewModel.getList().getValue();
         if (addresses == null)
             return;
@@ -84,4 +83,5 @@ public class HomeFragment extends Fragment {
             orderAdapter.notifyDataSetChanged();
         }
     };
+
 }

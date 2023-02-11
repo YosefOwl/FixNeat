@@ -59,15 +59,6 @@ public class Address implements Parcelable {
     }
 
     @Override
-    public String toString() {
-        return "Address{" +
-                "city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", houseNum=" + houseNum +
-                '}';
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -78,4 +69,14 @@ public class Address implements Parcelable {
         parcel.writeString(street);
         parcel.writeInt(houseNum);
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNum=" + houseNum +
+                '}';
+    }
+
 }

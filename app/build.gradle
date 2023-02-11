@@ -43,4 +43,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    // TODO: Testing We are using Picasso for loading images from paths in our ImageView.
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

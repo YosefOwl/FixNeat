@@ -1,4 +1,4 @@
-package com.example.fixneat.Viwes.Interfaces;
+package com.example.fixneat.Interfaces;
 
 import com.example.fixneat.Model.Address;
 

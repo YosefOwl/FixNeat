@@ -1,4 +1,4 @@
-package com.example.fixneat.Viwes.adapters;
+package com.example.fixneat.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixneat.Model.Address;
 import com.example.fixneat.R;
-import com.example.fixneat.Viwes.Interfaces.OrderCallback;
+import com.example.fixneat.Interfaces.OrderCallback;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
@@ -68,6 +68,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         private final MaterialTextView city;
         private final MaterialTextView street;
         private final AppCompatImageView img;
+
         //private final ImageButton imageButton;
         public OrderViewHolder(@NonNull View itemView) {
 

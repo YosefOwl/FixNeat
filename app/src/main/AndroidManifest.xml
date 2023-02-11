@@ -2,7 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <!-- permissions for reading external storage -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--2 first attributes is for loading photos-->
     <application
+
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
