@@ -1,54 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp"
-    android:layout_margin="2dp"
+    style="@style/Theme.FixNeat"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="5dp"
     android:elevation="8dp"
-    app:cardElevation="8dp"
-    android:backgroundTint="@color/black">
+    app:cardElevation="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        style="@style/Theme.FixNeat">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img"
-            android:layout_width="45dp"
+            android:id="@+id/order_item_IMGV"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/splash_img" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/city"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img"
-            android:maxLines="1"
-            android:minLines="1"
-            android:textSize="24sp"
-            android:gravity="left"
-            android:textColor="@color/white"
-            android:text="City"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/street"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img"
-            android:layout_below="@id/city"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/order_item_IMGV"
             android:layout_centerInParent="true"
-            android:maxLines="1"
-            android:minLines="1"
-            android:textSize="24sp"
-            android:gravity="left"
-            android:textColor="@color/white"
-            android:text="Street"/>
+            android:layout_toStartOf="@+id/order_call_TV"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/order_item_client_name_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textSize="16sp"
+                android:text="Client Name"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/order_item_status_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textSize="16sp"
+                android:text="Order Status"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/order_item_date_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textSize="16sp"
+                android:text="Next Visit" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/order_item_note_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textSize="16sp"
+                android:text="Note"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/order_call_TV"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_call"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:text=""
+            android:cursorVisible="true"/>
 
     </RelativeLayout>
 

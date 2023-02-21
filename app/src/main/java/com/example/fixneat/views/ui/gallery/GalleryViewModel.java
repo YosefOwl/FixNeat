@@ -1,4 +1,4 @@
-package com.example.fixneat.Viwes.ui.gallery;
+package com.example.fixneat.views.ui.gallery;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,40 +8,27 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.fixneat.Repository.ImageRepo;
+
 import java.util.ArrayList;
 
 public class GalleryViewModel extends ViewModel {
 
-    //private final MutableLiveData<String> mText;
     private final MutableLiveData<ArrayList<String>> mImagePaths;
-
-
     private ArrayList<String> imagePaths;
 
-
-
     private Context context;
-    public GalleryViewModel setContext(Context context) {
-        this.context = context;
-        return this;
-    }
 
-    public GalleryViewModel() {
-       // mText = new MutableLiveData<>();
+    public GalleryViewModel(Context context) {
+        this.context = context;
+
         mImagePaths = new MutableLiveData<>();
 
         imagePaths = new ArrayList<>();
-        loadImagePaths();
         mImagePaths.setValue(imagePaths);
 
-        //mText.setValue("This is gallery fragment");
     }
 
-
-
-//    public LiveData<String> getText() {
-//        return mText;
-//    }
 
     public LiveData<ArrayList<String>> getImagePaths() {
         return mImagePaths;
@@ -50,6 +37,7 @@ public class GalleryViewModel extends ViewModel {
     // in this method we are adding all our image paths
     private void loadImagePaths() {
 
+        ImageRepo.getInstance().retrieveImageUriFromFirebase();
         // checking if the device is having an sd card or not.
         boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
 

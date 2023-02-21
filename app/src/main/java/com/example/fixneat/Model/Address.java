@@ -3,33 +3,26 @@ package com.example.fixneat.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 public class Address implements Parcelable {
 
     private String city;
     private String street;
-    private int houseNum;
+    private int homeNum;
+    private int aptNum;
 
 
     public Address() {
+
     }
 
-    protected Address(Parcel in) {
+    protected Address(@NonNull Parcel in) {
         city = in.readString();
         street = in.readString();
-        houseNum = in.readInt();
+        homeNum = in.readInt();
+        aptNum = in.readInt();
     }
-
-    public static final Creator<Address> CREATOR = new Creator<Address>() {
-        @Override
-        public Address createFromParcel(Parcel in) {
-            return new Address(in);
-        }
-
-        @Override
-        public Address[] newArray(int size) {
-            return new Address[size];
-        }
-    };
 
     public String getCity() {
         return city;
@@ -49,14 +42,35 @@ public class Address implements Parcelable {
         return this;
     }
 
-    public int getHouseNum() {
-        return houseNum;
+    public int getHomeNum() {
+        return homeNum;
     }
 
-    public Address setHouseNum(int houseNum) {
-        this.houseNum = houseNum;
+    public Address setHomeNum(int homeNum) {
+        this.homeNum = homeNum;
         return this;
     }
+
+    public int getAptNum() {
+        return aptNum;
+    }
+
+    public Address setAptNum(int aptNum) {
+        this.aptNum = aptNum;
+        return this;
+    }
+
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
 
     @Override
     public int describeContents() {
@@ -67,16 +81,12 @@ public class Address implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(city);
         parcel.writeString(street);
-        parcel.writeInt(houseNum);
+        parcel.writeInt(homeNum);
+        parcel.writeInt(aptNum);
     }
 
     @Override
     public String toString() {
-        return "Address{" +
-                "city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", houseNum=" + houseNum +
-                '}';
+        return  ""   + street + " " + homeNum + "/" + aptNum + ", " + city + ".";
     }
-
 }

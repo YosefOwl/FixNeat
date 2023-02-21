@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Viwes.ui.gallery.ImageDetailFragment">
+    tools:context=".views.ui.gallery.ImageDetailFragment">
 
     <!--image view to display our image-->
     <ImageView

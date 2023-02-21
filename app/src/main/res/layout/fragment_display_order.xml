@@ -1,155 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Viwes.ui.orders.DisplayOrderFragment">
+    android:orientation="vertical"
+    tools:context=".views.ui.orders.DisplayOrderFragment">
 
-    <RelativeLayout
 
+    <LinearLayout android:id="@+id/statusLL"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Viwes.MenuActivity">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:foregroundGravity="center_horizontal">
 
         <LinearLayout
-            android:id="@+id/order_ll_status"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:elevation="@dimen/cardview_default_radius"
-            android:layout_alignParentEnd="true" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/order_IMG_status1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_menu_camera" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ImageSt1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/status_measure_blur" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/order_IMG_status2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_menu_camera" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/order_IMG_status"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Measurement"/>
 
         </LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_firstName"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/order_ll_status"
-            android:layout_margin="20dp"
-            android:text="fname"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_arrow_right_24" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_lastName"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_firstName"
-            android:layout_margin="20dp"
-            android:text="lname"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_phone"
-            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ImageSt2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/status_prepare_blur" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Preparation"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_lastName"
-            android:layout_margin="20dp"
-            android:text="phone"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_email"
-            android:layout_width="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_arrow_right_24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_phone"
-            android:layout_margin="20dp"
-            android:text="email"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_email"
-            android:layout_margin="20dp"
-            android:text="city"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_street"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_city"
-            android:layout_margin="20dp"
-            android:text="street"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_houseNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_street"
-            android:layout_margin="20dp"
-            android:text="house number"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ImageSt3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/status_install_blur" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Installation"
+                android:gravity="center"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/od_tv_test"
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_below="@+id/statusLL"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:backgroundTint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/listTitleTV"
+        android:layout_below="@+id/divider1"
+        style="@style/Theme.FixNeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#666666"
+        android:gravity="center"
+        android:text="Order details"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <FrameLayout android:id="@+id/FL"
+        android:layout_above="@+id/bottomLL"
+        android:layout_below="@+id/listTitleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        >
+
+        <ExpandableListView
+            android:id="@+id/orderItemsELV"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ExpandableListView>
+
+    </FrameLayout>
+
+
+    <LinearLayout android:id="@+id/bottomLL"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/backBTN"
+            android:layout_gravity="start|center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/od_tv_street"
-            android:layout_margin="20dp"
-            android:text="test"
-            android:textSize="30sp"
-            android:maxLines="1"
-            />
-    </RelativeLayout>
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Back" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/order_BTN_status"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        android:text="Next Status"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nextStateBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="next status" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/order_BTN_back"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="20dp"
-        android:text="Back"/>
+    </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>
