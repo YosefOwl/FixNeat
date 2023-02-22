@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_blue"
     tools:context=".views.ui.gallery.GalleryFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/galleryTXTV"
+        android:id="@+id/noGalleryMsgTV"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:layout_margin="40dp"
+        android:padding="15dp"
         android:textSize="20sp"
         android:gravity="center"
-        android:text="Work Gallery"
-        android:layout_centerInParent="true"/>
+        android:background="@drawable/border"
+        android:text="No images to display! \n\n To create your gallery take a photo or upload from your device."
+        android:visibility="gone"/>
 
     <FrameLayout
         android:id="@+id/container_fragment"
         android:name="com.example.fixneat.views.ui.gallery.ImageDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        android:visibility="gone"/>
+        android:layout_margin="30dp" />
 
     <!--recycler view for displaying the list of images-->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gallery_RV_img"
+        android:id="@+id/gallery_RCV"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

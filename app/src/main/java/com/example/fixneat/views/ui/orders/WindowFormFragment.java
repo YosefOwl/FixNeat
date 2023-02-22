@@ -1,21 +1,18 @@
 package com.example.fixneat.views.ui.orders;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.fixneat.Model.Door;
+import androidx.fragment.app.Fragment;
+
 import com.example.fixneat.Model.Job;
 import com.example.fixneat.Model.Order;
 import com.example.fixneat.Model.Window;
 import com.example.fixneat.R;
-import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentWindowFormBinding;
 
 import java.util.ArrayList;
@@ -49,7 +46,6 @@ public class WindowFormFragment extends Fragment {
         order = (Order)getArguments().getParcelable(WINDOW);
 
         if (order == null) {
-            SignalUser.getInstance().toast("PergolaFormFragment get PERGOLA NULL");
             getFragmentManager().popBackStackImmediate();
         }
 
@@ -162,7 +158,7 @@ public class WindowFormFragment extends Fragment {
 
         adapterProfileDD = new ArrayAdapter<String>(this.getContext(), R.layout.dropdown_list_item,
                 OrderHelper.getProfileTypes());
-        binding.profileTypeDropDown.setAdapter(adapterColorDD);
+        binding.profileTypeDropDown.setAdapter(adapterProfileDD);
         binding.profileTypeDropDown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

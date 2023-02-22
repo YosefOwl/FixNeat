@@ -2,6 +2,7 @@ package com.example.fixneat;
 
 import android.app.Application;
 
+import com.example.fixneat.Utils.ImageLoader;
 import com.example.fixneat.Utils.SignalUser;
 
 public class App extends Application {
@@ -11,5 +12,7 @@ public class App extends Application {
         super.onCreate();
 
         SignalUser.initInstance(this);
+        ImageLoader.initInstance(this);
+
     }
 }

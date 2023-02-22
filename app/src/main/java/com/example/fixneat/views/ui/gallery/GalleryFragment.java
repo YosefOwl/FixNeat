@@ -27,14 +27,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixneat.Adapters.GalleryAdapter;
 import com.example.fixneat.BuildConfig;
 import com.example.fixneat.Interfaces.GalleryCallback;
 import com.example.fixneat.R;
-import com.example.fixneat.Repository.ImageRepo;
 import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentGalleryBinding;
 
@@ -51,67 +50,60 @@ public class GalleryFragment extends Fragment {
     public static final int GALLERY_REQUEST_CODE = 400;
 
     private FragmentGalleryBinding binding;
-    private RecyclerView recyclerView;
     private GalleryAdapter galleryAdapter;
     private GalleryViewModel galleryViewModel;
 
 
     private String currentPhotoPath;
-    private ImageDetailFragment imageDetailFragment;
     private ProgressDialog progressDialog;
+
     GalleryCallback galleryCallback = (imagePath, position) -> {
         showImage(imagePath);
     };
 
-    private void showImage(String imagePath) {
-
-        imageDetailFragment = new ImageDetailFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("imagePath", imagePath);
-        imageDetailFragment.setArguments(bundle);
-
-        replaceFragment(imageDetailFragment);
-    }
+    public GalleryFragment() {}
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
-        galleryViewModel = new GalleryViewModel(this.getContext());
-        recyclerView = binding.galleryRVImg;
+        binding.galleryRCV.setHasFixedSize(true);
+        binding.galleryRCV.setLayoutManager(new GridLayoutManager(this.getContext(), 4));
 
-        initView();
+        galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
+        galleryViewModel.getImages().observe(getViewLifecycleOwner(), observer);
+
+        galleryAdapter = new GalleryAdapter(getContext());
+        galleryAdapter.setGalleryCallback(galleryCallback);
+
+        binding.galleryRCV.setAdapter(galleryAdapter);
+
         initButtons();
-        galleryViewModel.getImagePaths().observe(getViewLifecycleOwner(),observer);
 
-        return root;
+        return binding.getRoot();
     }
 
-    private void initView() {
-        ArrayList imagePaths = galleryViewModel.getImagePaths().getValue();
 
-        if (imagePaths == null) {
-            // null is mean that no images
-            //TODO display some message instead pic
-            return;
-        }
+    private void showImage(String imagePath) {
 
-        galleryAdapter = new GalleryAdapter(this.getContext(), imagePaths);
+        ImageDetailFragment fragment = new ImageDetailFragment();
+        Bundle bundle = new Bundle();
 
-        GridLayoutManager manager = new GridLayoutManager(this.getContext(), 4);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(galleryAdapter);
-        galleryAdapter.setGalleryCallback(galleryCallback);
+        bundle.putString(ImageDetailFragment.IMAGE_PATH, imagePath);
+        fragment.setArguments(bundle);
+
+        replaceFragment(fragment);
     }
 
     private void initButtons() {
 
         binding.galleryFABCamera.setOnClickListener(v-> {
+
             askCameraPermissions();
         });
 
         binding.galleryFABGalleryLoad.setOnClickListener(view -> {
+
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
         });
@@ -203,14 +195,30 @@ public class GalleryFragment extends Fragment {
     private void replaceFragment(Fragment fragment) {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.nav_host_fragment_content_menu, fragment)
+                .replace(R.id.nav_host_fragment_content_menu, fragment).addToBackStack(null)
                 .commit();
     }
 
     Observer<ArrayList<String>> observer = new Observer<ArrayList<String>>() {
         @Override
-        public void onChanged(ArrayList<String> imagePaths) {
-            galleryAdapter.notifyDataSetChanged();
+        public void onChanged(ArrayList<String> images) {
+
+            if (images == null) {
+                binding.noGalleryMsgTV.setVisibility(View.VISIBLE);
+            }
+            else if (images.size() == 0){
+                binding.noGalleryMsgTV.setVisibility(View.VISIBLE);
+            }
+
+            else {
+                binding.noGalleryMsgTV.setVisibility(View.GONE);
+                binding.galleryRCV.setVisibility(View.VISIBLE);
+
+                galleryAdapter.setGalleryCallback(galleryCallback);
+                galleryAdapter.setImagePathsList(images);
+                binding.galleryRCV.setAdapter(galleryAdapter);
+                galleryAdapter.notifyDataSetChanged();
+            }
         }
     };
 
@@ -244,7 +252,7 @@ public class GalleryFragment extends Fragment {
                             SignalUser.getInstance().toast("Upload Photo Required Tag Name");
                         }
                         else {
-                            ImageRepo.getInstance().uploadImageToFirebase(imageName, imageUri, finalTag);
+                            galleryViewModel.insert(imageName, imageUri, finalTag);
                             dialog.dismiss();
                             SignalUser.getInstance().toast("Photo Uploaded");
                         }
@@ -265,4 +273,5 @@ public class GalleryFragment extends Fragment {
         dialog.setContentView(view);
         dialog.show();
     }
+
 }

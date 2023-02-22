@@ -14,18 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fixneat.Model.Address;
-import com.example.fixneat.Model.Balcony;
 import com.example.fixneat.Model.Client;
 import com.example.fixneat.Model.DateTime;
-import com.example.fixneat.Model.Door;
-import com.example.fixneat.Model.Job;
 import com.example.fixneat.Model.Order;
-import com.example.fixneat.Model.Pergola;
-import com.example.fixneat.Model.Window;
 import com.example.fixneat.R;
 import com.example.fixneat.databinding.FragmentCreateOrderBinding;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -147,50 +141,4 @@ public class CreateOrderFragment extends Fragment {
 //        return matcher.matches();
 //    }
 
-
-    public void fun(){
-        ArrayList<Job> jobs = new ArrayList<>();
-        Job window = new Window().setWindowType("Wood").setWindowType("big").setGlassType("milki").setColor("red")
-                .setProfileType("10x10").setNote("bla bla").setDescription("desc").setCost(100)
-                .setPrice(20).setHeight(1.5).setLength(454).setWidth(78).setImgUrl("urlimg");
-        jobs.add(window);
-        Job win = new Window().setWindowType("Wood").setWindowType("big").setGlassType("milki").setColor("red")
-                .setProfileType("10x10").setNote("bla bla").setDescription("desc").setCost(100)
-                .setPrice(20).setHeight(1.5).setLength(454).setWidth(78).setImgUrl("urlimg");
-        jobs.add(win);
-        Job door = new Door().setDoorType("somthng").setGlassType("milki").setColor("red")
-                .setProfileType("10x10").setNote("bla bla").setDescription("desc").setCost(100)
-                .setPrice(20).setHeight(1.5).setLength(454).setWidth(78).setImgUrl("urlimg");
-
-        jobs.add(door);
-
-        Job bal = new Balcony().setMaterialType("pach").setIncludeRetractableRoof(true)
-                .setNote("bla bla").setDescription("desc").setCost(100)
-                .setPrice(20).setHeight(1.5).setLength(454).setWidth(78).setImgUrl("urlimg");
-
-        jobs.add(bal);
-
-        Job perg = new Pergola().setMaterialType("alumi").setIncludeRainCover(true).setIncludeShading(false).setColor("red")
-                .setProfileType("10x10").setNote("bla bla").setDescription("desc").setCost(100)
-                .setPrice(20).setHeight(1.5).setLength(454).setWidth(78).setImgUrl("urlimg");
-        jobs.add(perg);
-
-        Address address = new Address()
-                .setCity("Jeru").setStreet("ZE").setAptNum(1).setHomeNum(43);
-
-        Client client = new Client()
-                .setClientID()
-                .setAddress(address)
-                .setFirstName("YOSRF")
-                .setPhoneNumber("0547454")
-                .setEmailAddress("com.ex@mail");
-        DateTime dateTime = new DateTime()
-                .setDate("fake date")
-                .setTime("fake time");
-        Order newOrder = new Order().setJobs(jobs)
-                .setCurrentStatus("start")
-                .setMeasureVisitD_T(dateTime)
-                .setClient(client)
-                .setNote("bla bla bla bla bla bla bla bla ");
-    }
 }

@@ -23,16 +23,15 @@ public class OrderRepo {
 
     static final String ABS_ROOT = "USERS";
     static final String ORDERS = "ORDERS";
-    static final String GALLERY_IMAGES_URL = "GALLERY_IMAGES_URL";
-    static final String ORDERS_IMAGES_URL = "ORDERS_IMAGES_URL";
+
 
     private static OrderRepo instance;
 
-    private DataCallback callback;
+    private OrderDataCallback callback;
 
-    private MutableLiveData<ArrayList<Order>> mldOrdersList = new MutableLiveData<>();
     private final String userId;
-    private DatabaseReference rootRef;
+
+    private final DatabaseReference rootRef;
 
     private OrderRepo() {
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -47,7 +46,7 @@ public class OrderRepo {
         return instance;
     }
 
-    public void setCallback(DataCallback callback) {
+    public void setCallback(OrderDataCallback callback) {
         this.callback = callback;
     }
 
@@ -124,32 +123,8 @@ public class OrderRepo {
         });
     }
 
-    // boolean isOrderImage, true is order image otherwise gallery
-    public void insertGalleryImgUrl(String tag, String imageUrl, boolean isOrderImage) {
-
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(ABS_ROOT).child(userId);
-
-        if (isOrderImage)
-            dbRef = dbRef.child(ORDERS_IMAGES_URL);
-        else
-            dbRef = dbRef.child(GALLERY_IMAGES_URL);
-
-        dbRef.child(tag).setValue(imageUrl).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.d("RT_DB :", "insert url success");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("RT_DB :", "insert url failed :" + e);
-            }
-        });
-    }
-
-
     public void deleteOrder() {
-//        dbRef.child(rootPath).setValue(null);
-//        dbRef.child(rootPath).removeValue(); // same as set with null
+        // TODO not implement yet
     }
+
 }

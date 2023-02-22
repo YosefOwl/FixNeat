@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.fixneat.Model.Balcony;
 import com.example.fixneat.Model.Job;
 import com.example.fixneat.Model.Order;
-import com.example.fixneat.Model.Window;
 import com.example.fixneat.R;
-import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentBalconyFormBinding;
 
 import java.util.ArrayList;
@@ -35,7 +33,6 @@ public class BalconyFormFragment extends Fragment {
     private Order order;
 
     public BalconyFormFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -45,7 +42,6 @@ public class BalconyFormFragment extends Fragment {
         binding = FragmentBalconyFormBinding.inflate(inflater, container, false);
         order = (Order)getArguments().getParcelable(BALCONY);
         if (order == null) {
-            SignalUser.getInstance().toast("PergolaFormFragment get PERGOLA NULL");
             getFragmentManager().popBackStackImmediate();
         }
 
@@ -134,9 +130,6 @@ public class BalconyFormFragment extends Fragment {
                 .setCost(cost)
                 .setNote(note);
 
-//        Job balcony = new Balcony().setMaterialType("balcmt").setIncludeRetractableRoof(true)
-//                .setDescription("descrperg").setCost(541).setHeight(2.5005).setLength(1.5).setNote("dnote").setPrice(500).setWidth(0.11);
-
         ArrayList<Job> jobs;
         if (order.getJobs() == null)
             jobs = new ArrayList<>();
@@ -156,9 +149,6 @@ public class BalconyFormFragment extends Fragment {
                 .replace(R.id.nav_host_fragment_content_menu, fragment)
                 .commit();
 
-
-//        getParentFragmentManager().setFragmentResult(MainFormFragment.BALCONY, bundle);
-//
-//        getParentFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_menu, getParentFragment()).commit();
     }
+
 }
