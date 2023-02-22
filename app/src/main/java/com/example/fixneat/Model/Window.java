@@ -98,12 +98,15 @@ public class Window extends Job implements Parcelable {
 
     @Override
     public String toString() {
-        return "Window{" +
-                "windowType='" + windowType + '\'' +
-                ", glassType='" + glassType + '\'' +
-                ", profileType='" + profileType + '\'' +
-                ", color='" + color + '\'' +
-                ", includeMosquitoNet=" + includeMosquitoNet +
-                '}';
+        String mosqiuto = (includeMosquitoNet == true) ?"yes":"no";
+
+        return "Window: \n" +
+                "\nType: " + windowType + " Glass: " + glassType +
+                "\nProfile: " + profileType + ", Color: " + color +
+                "\nInclude Mosquito Net: " + mosqiuto+
+                "\n Description: " + getDescription()  +
+                "\nLength: " + getLength() + " Width: " + getWidth() + " Height: " + getHeight() +
+                "\nPrice: " + getPrice() + " Cost: " + getCost() +
+                "\nNote: " + getNote();
     }
 }

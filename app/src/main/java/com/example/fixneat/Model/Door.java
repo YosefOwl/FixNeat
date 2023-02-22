@@ -98,12 +98,15 @@ public class Door extends Job implements Parcelable {
 
     @Override
     public String toString() {
-        return "Door{" +
-                "doorType='" + doorType + '\'' +
-                ", glassType='" + glassType + '\'' +
-                ", profileType='" + profileType + '\'' +
-                ", color='" + color + '\'' +
-                ", includeMosquitoNet=" + includeMosquitoNet +
-                '}';
+        String mosqiuto = (includeMosquitoNet == true) ?"yes":"no";
+
+        return "Door: \n" +
+                "\nType: " + doorType + " Glass: " + glassType +
+                "\nProfile: " + profileType + ", Color: " + color +
+                "\nInclude Mosquito Net: " + mosqiuto+
+                "\n Description: " + getDescription()  +
+                "\nLength: " + getLength() + " Width: " + getWidth() + " Height: " + getHeight() +
+                "\nPrice: " + getPrice() + " Cost: " + getCost() +
+                "\nNote: " + getNote();
     }
 }

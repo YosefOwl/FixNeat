@@ -98,12 +98,17 @@ public class Pergola extends Job implements Parcelable {
 
     @Override
     public String toString() {
-        return "Pergola{" +
-                "materialType='" + materialType + '\'' +
-                ", profileType='" + profileType + '\'' +
-                ", color='" + color + '\'' +
-                ", includeRainCover=" + includeRainCover +
-                ", includeShading=" + includeShading +
-                '}';
+
+        String rain = (includeRainCover == true) ?"yes":"no";
+        String shadow = (includeShading == true) ?"yes":"no";
+        return "Balcony: \n" +
+                "\nMaterial: " + materialType +
+                "Profile: " + profileType + ", Color: " + color +
+                "\nInclude Rain Cover: " + rain+
+                "\nInclude Shading: " + shadow+
+                "\n Description: " + getDescription()  +
+                "\nLength: " + getLength() + " Width: " + getWidth() + " Height: " + getHeight() +
+                "\nPrice: " + getPrice() + " Cost: " + getCost() +
+                "\nNote: " + getNote();
     }
 }
