@@ -15,27 +15,17 @@
         android:background="@drawable/border"
         style="@style/Theme.FixNeat">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/order_item_IMGV"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/splash_img" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_toEndOf="@id/order_item_IMGV"
             android:layout_centerInParent="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/order_call_TV"
-            >
+            android:paddingStart="15dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/order_item_client_name_TV"
@@ -84,13 +74,16 @@
             android:id="@+id/order_call_TV"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/ic_call"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_call"
             android:clickable="true"
-            android:text=""
-            android:cursorVisible="true"/>
+            android:cursorVisible="true"
+            android:text="" />
 
     </RelativeLayout>
 

@@ -56,9 +56,9 @@ public class Balcony extends Job implements Parcelable {
         String roof = (includeRetractableRoof == true) ?"yes":"no";
         return "Balcony: \n" +
                 "\nMaterial: " + materialType +
-                "Profile Type: " + profileType + ", Color: " + color +
+                "Profile: " + profileType + ", Color: " + color +
                 "\nInclude Retractable Roof: " + roof+
-                "\n Description: " + getDescription()  +
+                "\nDescription: " + getDescription()  +
                 "\nLength: " + getLength() + " Width: " + getWidth() + " Height: " + getHeight() +
                 "\nPrice: " + getPrice() + " Cost: " + getCost() +
                 "\nNote: " + getNote();

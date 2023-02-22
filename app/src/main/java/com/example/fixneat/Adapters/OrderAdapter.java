@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixneat.Interfaces.OrderCallback;
@@ -58,14 +57,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }
 
         String note = (order.getNote() != null) ? order.getNote() :"empty";
-        String dateF = (order.getMeasureVisitD_T() != null)? order.getMeasureVisitD_T().toString():"";
-        String date = (order.getInstallVisitD_T() != null )? order.getMeasureVisitD_T().toString(): dateF;
 
+        String date;
+
+        if (order.getInstallVisitD_T() != null)
+            date = order.getInstallVisitD_T().toString();
+        else
+            date = (order.getMeasureVisitD_T() != null)? order.getMeasureVisitD_T().toString():"Not set";
         holder.clientName.setText("Client Name: " + firstName + " " + lastName + "");
         holder.date.setText("Next Visit D&T: " + date + "");
         holder.note.setText("Note: " + note + "");
         holder.status.setText("Status: " + order.getCurrentStatus() + "");
-        holder.img.setImageResource(R.drawable.splash_img);
     }
 
 
@@ -85,7 +87,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         private final MaterialTextView date;
         private final MaterialTextView status;
         private final MaterialTextView note;
-        private final AppCompatImageView img;
         private final MaterialTextView call;
 
         public OrderViewHolder(@NonNull View itemView) {
@@ -97,8 +98,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             date = itemView.findViewById(R.id.order_item_date_TV);
 
             call =  itemView.findViewById(R.id.order_call_TV);
-
-            img = itemView.findViewById(R.id.order_item_IMGV);
 
             call.setOnClickListener(view -> {
                 // not implement yet

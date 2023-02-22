@@ -21,7 +21,6 @@ public class DisplayOrderListAdapter extends BaseExpandableListAdapter {
     private List<String> groupList;
 
     public DisplayOrderListAdapter(Context context, List<String> groupList, Map<String, List<String>> orderCollection){
-
         this.context = context;
         this.orderCollection = orderCollection;
         this.groupList = groupList;
