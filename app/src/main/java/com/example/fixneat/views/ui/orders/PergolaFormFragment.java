@@ -9,12 +9,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.fixneat.Model.Balcony;
 import com.example.fixneat.Model.Job;
 import com.example.fixneat.Model.Order;
 import com.example.fixneat.Model.Pergola;
 import com.example.fixneat.R;
-import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentPergolaFormBinding;
 
 import java.util.ArrayList;
@@ -45,7 +43,6 @@ public class PergolaFormFragment extends Fragment {
 
         order = (Order)getArguments().getParcelable(PERGOLA);
         if (order == null) {
-            SignalUser.getInstance().toast("PergolaFormFragment get PERGOLA NULL");
             getFragmentManager().popBackStackImmediate();
         }
 
@@ -95,8 +92,6 @@ public class PergolaFormFragment extends Fragment {
                 .setPrice(price)
                 .setCost(cost)
                 .setNote(note);
-//        Job pergola = new Pergola().setMaterialType("pmt").setColor("dc").setProfileType("dp").setIncludeShading(true).setIncludeRainCover(false)
-//                .setDescription("descrperg").setCost(541).setHeight(2.5005).setLength(1.5).setNote("dnote").setPrice(500).setWidth(0.11);
 
         ArrayList<Job> jobs;
         if (order.getJobs() == null)
@@ -117,7 +112,6 @@ public class PergolaFormFragment extends Fragment {
                 .replace(R.id.nav_host_fragment_content_menu, fragment)
                 .commit();
 
-//        getParentFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_menu, getParentFragment()).commit();
     }
 
     private void initDropsDownAdapter() {

@@ -15,7 +15,6 @@ import com.example.fixneat.Adapters.OrderAdapter;
 import com.example.fixneat.Interfaces.OrderCallback;
 import com.example.fixneat.Model.Order;
 import com.example.fixneat.R;
-import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -23,14 +22,10 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     public static final String NEW_ORDER = "NEW_ORDER";
-    public static final String EDITED_ORDER_UPDATED = "EDITED_ORDER_UPDATED";
 
-
-    public HomeFragment (){}
     private FragmentHomeBinding binding;
     private OrderViewModel orderViewModel;
     private OrderAdapter orderAdapter;
-//    private ArrayList orders;
 
     OrderCallback orderCallback = new OrderCallback() {
         @Override
@@ -48,9 +43,12 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    public HomeFragment (){}
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+
         binding.ordersRCV.setHasFixedSize(true);
         binding.ordersRCV.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
@@ -63,16 +61,20 @@ public class HomeFragment extends Fragment {
 
         orderViewModel.getOrders().observe(getViewLifecycleOwner(), observer);
         orderAdapter = new OrderAdapter();
+        initButtons();
 
+        return binding.getRoot();
+    }
+
+    private void initButtons() {
         binding.crateOrderFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new CreateOrderFragment());
             }
         });
-
-        return binding.getRoot();
     }
+
 
     private void replaceFragment(Fragment fragment) {
         getFragmentManager()
@@ -86,16 +88,13 @@ public class HomeFragment extends Fragment {
         public void onChanged(ArrayList<Order> orders) {
 
             if (orders == null) {
-                SignalUser.getInstance().toast("Orders null onChanged");
                 binding.noOrdersTV.setVisibility(View.VISIBLE);
             }
             else if (orders.size() == 0){
-                SignalUser.getInstance().toast("Orders empty onChanged");
                 binding.noOrdersTV.setVisibility(View.VISIBLE);
             }
 
             else {
-                SignalUser.getInstance().toast("Orders display onChanged");
                 binding.noOrdersTV.setVisibility(View.GONE);
                 binding.ordersRCV.setVisibility(View.VISIBLE);
 
@@ -103,7 +102,6 @@ public class HomeFragment extends Fragment {
                 orderAdapter.setOrdersList(orders);
                 binding.ordersRCV.setAdapter(orderAdapter);
                 orderAdapter.notifyDataSetChanged();
-
             }
         }
     };

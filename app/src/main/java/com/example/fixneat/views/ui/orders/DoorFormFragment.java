@@ -13,7 +13,6 @@ import com.example.fixneat.Model.Door;
 import com.example.fixneat.Model.Job;
 import com.example.fixneat.Model.Order;
 import com.example.fixneat.R;
-import com.example.fixneat.Utils.SignalUser;
 import com.example.fixneat.databinding.FragmentDoorFormBinding;
 
 import java.util.ArrayList;
@@ -45,7 +44,6 @@ public class DoorFormFragment extends Fragment {
         binding = FragmentDoorFormBinding.inflate(inflater, container, false);
         order = (Order)getArguments().getParcelable(DOOR);
         if (order == null) {
-            SignalUser.getInstance().toast("PergolaFormFragment get PERGOLA NULL");
             getFragmentManager().popBackStackImmediate();
         }
 
@@ -95,8 +93,6 @@ public class DoorFormFragment extends Fragment {
                 .setPrice(price)
                 .setCost(cost)
                 .setNote(note);
-//        Job door = new Door().setDoorType("dt").setColor("dc").setGlassType("dg").setProfileType("dp")
-//                .setIncludeMosquitoNet(false).setDescription("descrDoo").setCost(541).setHeight(2.5005).setLength(1.5).setNote("dnote").setPrice(500).setWidth(0.11);
 
         ArrayList<Job> jobs;
         if (order.getJobs() == null)

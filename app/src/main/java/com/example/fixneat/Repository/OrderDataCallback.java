@@ -4,7 +4,7 @@ import com.example.fixneat.Model.Order;
 
 import java.util.ArrayList;
 
-public interface DataCallback {
+public interface OrderDataCallback {
 
     void uploadFinish(ArrayList<Order> mldOrdersList);
 }

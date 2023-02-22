@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
     private ArrayList<Order> ordersList;
-    OrderCallback orderCallback;
+    private OrderCallback orderCallback;
 
     public OrderAdapter () {
         this.ordersList = new ArrayList<>();
@@ -34,7 +34,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             notifyDataSetChanged();
         }
     }
-
 
     public void setOrderCallback(OrderCallback orderCallback){
         this.orderCallback = orderCallback;

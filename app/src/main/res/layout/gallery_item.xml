@@ -14,7 +14,7 @@
         android:id="@+id/idIVImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_img"/>
 
 </com.google.android.material.card.MaterialCardView>

@@ -15,7 +15,6 @@ import com.example.fixneat.Model.Order;
 import com.example.fixneat.R;
 import com.example.fixneat.Repository.OrderRepo;
 import com.example.fixneat.databinding.FragmentDisplayOrderBinding;
-import com.example.fixneat.Utils.SignalUser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,8 +171,6 @@ public class DisplayOrderFragment extends Fragment {
         binding.orderItemsELV.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                String selected = expandableListAdapter.getChild(i,i1).toString();
-                SignalUser.getInstance().toast("Selected: " + selected);
                 return true;
             }
         });
