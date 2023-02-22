@@ -21,8 +21,14 @@ Add image via camera phone.
 Add image from gallery device.
 Save images in firebase storage, the urls saved in real time under user.
  
-## Gameplay Version 1
-add photos video here
+## View example
+
+
+https://user-images.githubusercontent.com/93843185/220553451-7acf803a-1446-4463-a654-f6fe6cff14e4.mp4
+
+
+
+
 
 
 ## Permissions
